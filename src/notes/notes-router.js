@@ -44,6 +44,7 @@ notesRouter
             newNote
         )
             .then(note => {
+                console.log(note);
                 res
                     .status(201)
                     .location(path.posix.join(req.originalUrl, `/${note.id}`))
@@ -61,7 +62,7 @@ notesRouter
         )
             .then(note => {
                 if (!note) {
-                    return res.status.json({
+                    return res.status(404).json({
                         error: { message: `Note doesn't exist` }
                     })
                 }
